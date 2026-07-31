@@ -2,7 +2,7 @@
 
 Machine learning project predicting customer churn, built as a portfolio project for Data Analyst / BI Analyst / Entry-Level ML roles.
 
-**Status:** Project setup in progress — dataset selection, EDA, modeling, and deployment sections coming soon.
+**Status:** Data cleaning and exploratory analysis complete. Feature engineering and modeling in progress.
 
 ## Overview
 
@@ -22,6 +22,16 @@ The raw CSV is not committed to this repo (data files shouldn't live in git hist
 # Download into data/raw/
 curl -o data/raw/Telco-Customer-Churn.csv https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv
 ```
+
+## Exploratory Data Analysis
+
+Full analysis: [`notebooks/01_data_cleaning_and_eda.ipynb`](notebooks/01_data_cleaning_and_eda.ipynb) · Business writeup: [`reports/eda_summary.md`](reports/eda_summary.md)
+
+Key finding — contract type is the strongest churn driver found so far:
+
+![Churn rate by contract type](reports/figures/churn_by_contract.png)
+
+Month-to-month customers churn at **42.7%**, vs. **11.3%** for one-year and **2.8%** for two-year contracts. See the full writeup for all findings (tenure, pricing, internet service, and payment method effects).
 
 ## Tech Stack
 
