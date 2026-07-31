@@ -2,7 +2,7 @@
 
 Machine learning project predicting customer churn, built as a portfolio project for Data Analyst / BI Analyst / Entry-Level ML roles.
 
-**Status:** Data cleaning and exploratory analysis complete. Feature engineering and modeling in progress.
+**Status:** Data cleaning, EDA, and feature engineering complete. Modeling in progress.
 
 ## Overview
 
@@ -32,6 +32,16 @@ Key finding — contract type is the strongest churn driver found so far:
 ![Churn rate by contract type](reports/figures/churn_by_contract.png)
 
 Month-to-month customers churn at **42.7%**, vs. **11.3%** for one-year and **2.8%** for two-year contracts. See the full writeup for all findings (tenure, pricing, internet service, and payment method effects).
+
+## Feature Engineering & Selection
+
+Full analysis: [`notebooks/02_feature_engineering_and_selection.ipynb`](notebooks/02_feature_engineering_and_selection.ipynb)
+
+Added tenure buckets, average monthly spend, and service-count features, then validated each against the target with mutual information before keeping it:
+
+![Top features by mutual information](reports/figures/feature_importance_mutual_info.png)
+
+One engineered feature (`avg_monthly_spend`) was dropped after validation — despite reasonable individual signal, it was 99.6% correlated with the existing `MonthlyCharges` column and added no new information. Final feature set: **29 features**, reduced from 38 after removing structurally redundant one-hot encoded columns.
 
 ## Tech Stack
 
