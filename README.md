@@ -1,6 +1,6 @@
 # Customer Attrition Prediction
 
-Machine learning project predicting customer churn, built as a portfolio project for Data Analyst / BI Analyst / Entry-Level ML roles.
+End-to-end machine learning project predicting customer churn — data cleaning, EDA, model comparison, and explainability, with a deployed Streamlit app.
 
 **Status:** Full pipeline complete — data cleaning, EDA, feature engineering, modeling, explainability, and a working Streamlit app (tested locally; see Deployment below to publish it live).
 
