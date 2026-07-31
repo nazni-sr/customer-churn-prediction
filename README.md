@@ -8,6 +8,21 @@ Machine learning project predicting customer churn, built as a portfolio project
 
 This section will describe the business problem, dataset, modeling approach, and results once the project is built out.
 
+## Dataset
+
+**[Telco Customer Churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)** (originally released by IBM as a sample dataset for customer retention analysis).
+
+- 7,043 customers, 21 features (demographics, account info, services subscribed)
+- Target: `Churn` (Yes/No) — 26.5% churn rate (realistic class imbalance)
+- Business context: a telecom provider's customer-level data, used to predict which customers are likely to cancel their subscription
+
+The raw CSV is not committed to this repo (data files shouldn't live in git history). To reproduce:
+
+```bash
+# Download into data/raw/
+curl -o data/raw/Telco-Customer-Churn.csv https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv
+```
+
 ## Tech Stack
 
 - Python
