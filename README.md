@@ -2,7 +2,7 @@
 
 Machine learning project predicting customer churn, built as a portfolio project for Data Analyst / BI Analyst / Entry-Level ML roles.
 
-**Status:** Data cleaning, EDA, and feature engineering complete. Modeling in progress.
+**Status:** Data cleaning, EDA, feature engineering, and modeling complete. Explainability and deployment in progress.
 
 ## Overview
 
@@ -42,6 +42,22 @@ Added tenure buckets, average monthly spend, and service-count features, then va
 ![Top features by mutual information](reports/figures/feature_importance_mutual_info.png)
 
 One engineered feature (`avg_monthly_spend`) was dropped after validation — despite reasonable individual signal, it was 99.6% correlated with the existing `MonthlyCharges` column and added no new information. Final feature set: **29 features**, reduced from 38 after removing structurally redundant one-hot encoded columns.
+
+## Modeling
+
+Full analysis: [`notebooks/03_modeling.ipynb`](notebooks/03_modeling.ipynb) · Business writeup: [`reports/model_results.md`](reports/model_results.md)
+
+Three models (Logistic Regression, Random Forest, Gradient Boosting) were tuned via grid search and compared on a held-out test set:
+
+![ROC curves for tuned models](reports/figures/roc_curves.png)
+
+| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
+|---|---|---|---|---|---|
+| **Random Forest (selected)** | 0.756 | 0.527 | 0.791 | 0.632 | **0.846** |
+| Logistic Regression | 0.740 | 0.507 | 0.805 | 0.622 | 0.844 |
+| Gradient Boosting | 0.749 | 0.517 | 0.799 | 0.628 | 0.842 |
+
+All three models converge to within 0.4 points of ROC-AUC — model choice mattered far less than the feature engineering work above. The selected model catches **79% of actual churners**, prioritizing recall over precision since missing a churner (lost customer) is costlier than an unnecessary retention offer (false positive).
 
 ## Tech Stack
 
