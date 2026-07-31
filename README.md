@@ -2,7 +2,7 @@
 
 Machine learning project predicting customer churn, built as a portfolio project for Data Analyst / BI Analyst / Entry-Level ML roles.
 
-**Status:** Data cleaning, EDA, feature engineering, modeling, and explainability complete. Deployment (Streamlit) in progress.
+**Status:** Full pipeline complete — data cleaning, EDA, feature engineering, modeling, explainability, and a working Streamlit app (tested locally; see Deployment below to publish it live).
 
 ## Overview
 
@@ -69,6 +69,24 @@ Used SHAP to explain the model both globally (which features matter overall) and
 
 SHAP's ranking closely matches the mutual information ranking from feature selection — two independent methods agreeing on the same top drivers (internet service type, tenure, contract type, payment method) is strong evidence these effects are real. Individual predictions come with a waterfall breakdown (e.g., the highest-risk customer in the test set, flagged at 96.4% churn probability, explained by short tenure, fiber optic service, and a month-to-month contract) — turning a bare probability into something a retention team can actually act on.
 
+## Deployment
+
+The `app/streamlit_app.py` app lets a user enter a customer's account details and get a churn probability plus a SHAP-based breakdown of why — tested locally end-to-end, including in-browser.
+
+**Run locally:**
+
+```bash
+streamlit run app/streamlit_app.py
+```
+
+**Deploy to Streamlit Community Cloud:**
+
+1. Push this repo to GitHub (already done).
+2. At [share.streamlit.io](https://share.streamlit.io), connect the GitHub account and select this repo.
+3. Set the app file path to `app/streamlit_app.py` and deploy.
+
+Note: `models/best_model.joblib` and `models/feature_columns.json` are committed to this repo, unlike the raw/processed data — Streamlit Cloud does a fresh `git clone` rather than re-running the training notebooks, so the trained model has to actually be present in the repo for the app to work.
+
 ## Tech Stack
 
 - Python
@@ -85,7 +103,7 @@ customer-churn-prediction/
 │   └── processed/    # Cleaned/engineered data ready for modeling
 ├── notebooks/         # Exploratory analysis (EDA, prototyping)
 ├── src/                # Reusable, production-quality Python modules
-├── models/            # Saved trained model artifacts (not committed)
+├── models/            # best_model.joblib + feature_columns.json (committed, needed for deployment)
 ├── app/                # Streamlit application
 ├── tests/              # Unit tests
 ├── reports/

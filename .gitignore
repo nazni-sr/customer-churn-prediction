@@ -21,9 +21,12 @@ data/raw/*
 *.csv
 !data/sample/*.csv
 
-# Model artifacts
+# Model artifacts (best_model.joblib is committed deliberately: the deployed
+# Streamlit app needs it in the repo, since Streamlit Cloud does a fresh git
+# clone rather than re-running the training notebooks)
 *.pkl
 *.joblib
+!models/best_model.joblib
 models/*.pkl
 
 # IDE
