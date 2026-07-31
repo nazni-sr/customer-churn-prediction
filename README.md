@@ -6,7 +6,11 @@ End-to-end machine learning project predicting customer churn — data cleaning,
 
 ## Overview
 
-This section will describe the business problem, dataset, modeling approach, and results once the project is built out.
+**Business problem:** telecom companies lose recurring revenue every time a customer cancels, and it's far cheaper to retain an existing customer than acquire a new one. This project builds a system to identify which customers are likely to churn *before* they leave, so a retention team can act — not just a model that scores well on a leaderboard.
+
+**Approach:** clean and explore a real-world customer dataset, engineer and statistically validate features, train and tune multiple models, select based on business-relevant metrics (not just accuracy), explain every prediction with SHAP, and ship it as an interactive app a non-technical stakeholder could actually use.
+
+**Result:** a tuned Random Forest model (ROC-AUC 0.846) that catches 79% of customers who actually churn, with every prediction explained in plain terms — e.g. "this customer is high-risk because of short tenure, fiber optic service, and no long-term contract" — deployed in a Streamlit app where a user enters a customer profile and gets both a risk score and the reasoning behind it.
 
 ## Dataset
 
@@ -127,6 +131,10 @@ python -m venv .venv
 # Install dependencies
 pip install -r requirements.txt
 ```
+
+## Resume & Interview Prep
+
+ATS-friendly resume bullets and a full interview walkthrough (business problem, technical approach, model choice, evaluation, business impact) covering this project: [`reports/resume_and_interview_prep.md`](reports/resume_and_interview_prep.md).
 
 ## License
 
