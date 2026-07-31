@@ -16,7 +16,8 @@ ENV/
 .ipynb_checkpoints/
 
 # Data (raw datasets can be large / shouldn't be committed)
-data/raw/
+data/raw/*
+!data/raw/.gitkeep
 *.csv
 !data/sample/*.csv
 
