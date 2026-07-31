@@ -2,7 +2,7 @@
 
 Machine learning project predicting customer churn, built as a portfolio project for Data Analyst / BI Analyst / Entry-Level ML roles.
 
-**Status:** Data cleaning, EDA, feature engineering, and modeling complete. Explainability and deployment in progress.
+**Status:** Data cleaning, EDA, feature engineering, modeling, and explainability complete. Deployment (Streamlit) in progress.
 
 ## Overview
 
@@ -58,6 +58,16 @@ Three models (Logistic Regression, Random Forest, Gradient Boosting) were tuned 
 | Gradient Boosting | 0.749 | 0.517 | 0.799 | 0.628 | 0.842 |
 
 All three models converge to within 0.4 points of ROC-AUC — model choice mattered far less than the feature engineering work above. The selected model catches **79% of actual churners**, prioritizing recall over precision since missing a churner (lost customer) is costlier than an unnecessary retention offer (false positive).
+
+## Explainability
+
+Full analysis: [`notebooks/04_explainability.ipynb`](notebooks/04_explainability.ipynb) · Business writeup: [`reports/explainability_summary.md`](reports/explainability_summary.md)
+
+Used SHAP to explain the model both globally (which features matter overall) and locally (why a specific customer was flagged):
+
+![SHAP beeswarm plot](reports/figures/shap_beeswarm.png)
+
+SHAP's ranking closely matches the mutual information ranking from feature selection — two independent methods agreeing on the same top drivers (internet service type, tenure, contract type, payment method) is strong evidence these effects are real. Individual predictions come with a waterfall breakdown (e.g., the highest-risk customer in the test set, flagged at 96.4% churn probability, explained by short tenure, fiber optic service, and a month-to-month contract) — turning a bare probability into something a retention team can actually act on.
 
 ## Tech Stack
 
